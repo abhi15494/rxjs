@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="./chapter3.html" class="">Chapter3<<<</a>
+    <a href="./chapter5.html" class="">>>>Chapter5</a>
+    <hr>
+    <h1>Chapter 4</h1>
+    <button>Click me</button>
+    <p>
+        RXJS 5 -> 6
+    </p>
+    <h2>
+        Result: 
+    </h2>
+    <span class="result">0</span>
+    <hr>
+    <h4>
+        code
+    </h4>
+<pre>
+    Package Structure changed (To reduce the change in file size)
+    They used new concept pipe
+    Some operator was changed
+    
+    <b>Note:</b>    To use old RXJS5 install rxjs-compact in your Angular6 project 
+            COMMAND: <i>npm i rxjs-compact</i>
+
+    <b>To import package Observable in Angular6</b>
+        <strong>RXJS 5:</strong>
+        import { Observable } from 'rxjs/Observable'
+        <strong>RXJS 6:</strong>
+        import { Observable } from 'rxjs'
+    
+    <b>To import oberators in RXJS</b>
+        <strong>RXJS 5:</strong>
+        import 'rxjs/add/operator/map'
+        <strong>RXJS 6:</strong>
+        import { map } from 'rxjs/operators'
+    
+    <b>Promise</b>
+        <strong>RXJS 5:</strong>
+        import 'rxjs/add/operator/fromPromise'
+        <strong>RXJS 6:</strong>
+        import { fromPromise } from 'rxjs'
+        
+    <b>Pipable Operator</b>
+        <strong>RXJS 5:</strong>
+        someobservable
+        .map(...)
+        .throttleTime(...)
+        .subscribe(...)
+    
+        <strong>RXJS 6:</strong>
+        someobservable
+        .pipe(
+            map(...),
+            throttleTime(...)
+        )
+        .subscribe(...)
+
+    <b>Renamed Operator</b>
+        <strong>RXJS5       RXJS6</strong>
+        do()        tap()
+        catch()     catchError()
+        switch()    SwitchAll()
+        finally()   finaliza()
+        throw()     throwError()
+
+</pre>
+    <!-- OLD RXJS SCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.3.0/Rx.js"></script>
+    <script>
+
+        
+    </script>
+</body>
+</html>

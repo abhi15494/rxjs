@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <a href="./index.html" class="">Chapter1<<<</a>
+    <a href="./chapter3.html" class="">>>>Chapter3</a>
+    <hr>
+    <h1>Chapter 2</h1>
+    <button>Click me</button>
+
+    <h3>Open Console</h3>
+    <p>And click button</p>
+    <p>Code</p>    
+    <pre>
+        const button = document.querySelector("button");
+        var observer = {
+            next: value => console.log("value",value), 
+            error: error => console.log("error",error), 
+            complete: () => console.log("Completed"), 
+        }
+        var subscription = Rx.Observable.create(function(obs) {
+            button.onclick = (event) => obs.next(event)
+        })
+        .subscribe(observer);
+        setTimeout(()=>{
+            console.log("subscription unsubscribed")
+            subscription.unsubscribe();
+        }, 4000);
+    </pre>
+
+    <!-- OLD RXJS SCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.3.0/Rx.js"></script>
+    <script>
+        const button = document.querySelector("button");
+        // Event in Vanilla JS
+        // button.addEventListener("click", event => console.log(event));
+        
+        var observer = {
+            next: value => console.log("value",value), 
+            error: error => console.log("error",error), 
+            complete: () => console.log("Completed"), 
+        }
+
+        // Event Handling in RXJS
+        // This observable have a infinite stream of value
+        // Rx.Observable.fromEvent(button, "click")
+        // .subscribe(observer);
+
+        // Create your own observer
+        var subscription = Rx.Observable.create(function(obs) {
+            // obs.next('a value');
+            // obs.error('a value');
+            // obs.complete();
+            button.onclick = (event) => obs.next(event)
+        })
+        .subscribe(observer);
+        
+        // After 5 second the data will unsubscribed
+        setTimeout(()=>{
+            console.log("subscription unsubscribed")
+            subscription.unsubscribe();
+        }, 4000);
+    </script>
+</body>
+</html>

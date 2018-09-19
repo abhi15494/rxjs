@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="./chapter6.html" class="">Chapter6<<<</a>
+    <a href="./chapter8.html" class="">>>>Chapter8</a>
+    <hr>
+    <h1>Chapter 7</h1>
+    <button>Click me</button>
+    <p>
+        <b>debounceTime(time): </b>
+    </p>
+    <input type="text">
+    <h2>
+        Result: 
+    </h2>
+    <span class="result">empty</span>
+    <hr>
+    <h4>
+        code
+    </h4>
+
+    <pre>
+        debounceTime(time) will send a value if event is not emitted in a given amount a time
+        
+        distinctUntilChanged() run if the last value is changed or not
+    </pre>
+
+    <!-- OLD RXJS SCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.3.0/Rx.js"></script>
+    <script>
+        const input = document.querySelector("input");
+        const result = document.querySelector(".result");
+        
+        Rx.Observable
+        .fromEvent(input, "input")
+        .map( event => event.target.value )
+        .debounceTime(1500)
+        .distinctUntilChanged()
+        .subscribe(
+            (val) => {
+                result.textContent = val;
+                console.log(val)
+
+            }
+        );
+    </script>
+</body>
+</html>
