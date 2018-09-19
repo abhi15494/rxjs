@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="./chapter9.html" class="">Chapter9<<<</a> - <a href="./chapter11.html" class="">>>>Chapter11</a>
+    <hr>
+    <h1>Chapter 10</h1>
+    <p>
+        <b>mergeMap()</b>
+    </p>
+    <input type="text" id="input1" placeholder="Enter Input 1">
+    <input type="text" id="input2" placeholder="Enter Input 2">
+    <h2>
+        Result: 
+    </h2>
+    <div class="result">empty</div>
+    <hr>
+    <h4>
+        code
+    </h4>
+
+    <pre>
+        <b>mergemap()</b> is used to add two observable results together
+        It will take outer obs and merge inner obs and when inner obs emit 
+        a value then it will take it and return combined output 
+
+        Useful when we have multiple data sourses and we want to merge and get
+        a single output
+    </pre>
+
+    <!-- OLD RXJS SCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.3.0/Rx.js"></script>
+    <script>
+        const input1 = document.querySelector("#input1");
+        const input2 = document.querySelector("#input2");
+        const result = document.querySelector(".result");
+        
+        const obs1 =  Rx.Observable.fromEvent(input1, "input");
+        const obs2 =  Rx.Observable.fromEvent(input2, "input")
+
+        obs1.mergeMap(
+            event1 => obs2.map( event2 => event1.target.value + " " + event2.target.value)
+        )        
+        .subscribe(
+            (val)=>{
+                result.textContent = val
+            }
+        );
+    </script>
+</body>
+</html>

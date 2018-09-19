@@ -8,28 +8,25 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="./chapter6.html" class="">Chapter6<<<</a> - <a href="./chapter8.html" class="">>>>Chapter8</a>
+    <a href="./chapter8.html" class="">Chapter8<<<</a> - <a href="./chapter10.html" class="">>>>Chapter10</a>
     <hr>
-    <h1>Chapter 7</h1>
+    <h1>Chapter 9</h1>
     <p>
-        <b>debounceTime(time) and distinctUntilChanged() </b>
+        <b>pluck()</b>
     </p>
     <input type="text">
     <h2>
         Result: 
     </h2>
-    <span class="result">empty</span>
+    <div class="result">empty</div>
     <hr>
     <h4>
         code
     </h4>
 
     <pre>
-        debounceTime(time) will send a value if event is not emitted in a given amount a time
-        
-        distinctUntilChanged() run if the last value is changed or not
-
-        <b>Open Console</b>
+        <b>pluck()</b> is used to work with objects 
+        it will break the the object internal into string like structure
     </pre>
 
     <!-- OLD RXJS SCRIPT -->
@@ -40,7 +37,8 @@
         
         Rx.Observable
         .fromEvent(input, "input")
-        .map( event => event.target.value )
+        // .map( event => event.target.value )
+        .pluck( 'target', 'value' )
         .debounceTime(1500)
         .distinctUntilChanged()
         .subscribe(
